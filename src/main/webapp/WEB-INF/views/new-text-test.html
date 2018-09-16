@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../resources/js/bootstrap.min.js"></script>
+
+    <title>Title</title>
+</head>
+<body ng-app="orderText" ng-controller="OrderController">
+<div class="container">
+
+<div class="form-group">
+
+    <a  ng-repeat="advice in advices" class="btn btn-default" ng-click="textFunc(advice.description)">
+        {{advice.name}}
+    </a>
+</div>
+
+
+
+    <form>
+        <label>
+            Text
+            <textarea name="text" ng-model="textOrder"></textarea>
+        </label>
+
+    </form>
+</div>
+
+
+<script src="../../resources/js/angular.min.js"></script>
+<script src="../../resources/js/order-text.js"></script>
+
+</body>
+</html>

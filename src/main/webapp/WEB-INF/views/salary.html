@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Salary</title>
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css"/>
+</head>
+<body ng-app="SalaryModule" ng-controller="SalaryController">
+
+<div class="container">
+    <h1>Зарплата за текущую смену</h1>
+    <p>Доля автослесаря с работы: {{salaryPercent}}% </p>
+    <input class="form-control" type="range" min="0" max="100" ng-model="salaryPercent">
+
+</div>
+
+<div class="container" ng-repeat="employee in employees">
+    <p><strong>Имя работника: {{employee.name}}</strong></p>
+    <p>Работа, цена работы и доля</p>
+    <ul>
+        <li ng-repeat="work in employee.works">
+            {{work.workName}} {{work.workPrice}} р. доля: {{work.workPrice * salaryPercent * 0.01}} р.
+        </li>
+    </ul>
+    <p>Зарплата: <strong>{{returnSum(employee) * salaryPercent * 0.01}}</strong> р.</p>
+</div>
+<script src="../../resources/js/jquery.min.js"></script>
+<script src="../../resources/js/angular.min.js"></script>
+<script src="../../resources/js/bootstrap.min.js"></script>
+<script src="../../resources/js/salary-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<html ng-app="plunker">
+<head>
+    <meta charset="utf-8"/>
+    <title>New car</title>
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+
+    <script src="../../resources/js/bootstrap.min.js"></script>
+    <script src="../../resources/js/app.js"></script>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js">
+    </script>
+    <script>
+        var app = angular.module('myapp', []);
+        app.controller('mainController', function($scope) {
+            $scope.vm = {};
+            $scope.vm.myClick = function($event) {
+                alert($event);
+            }
+        });
+    </script>
+
+</head>
+<body ng-app="myapp">
+<div class="form-group">
+    <label for="selClient">Выбор Клиента</label>
+    <select class="form-control" name="clientId" id="selClient" >
+        <option value="${clients.get(0).id}" ng-selected="selected"  >${clients.get(0).name}</option>
+
+            <option value="${client.id}"  ng-click="vm.myClick(vm.myChkModel)">${client.name}</option>
+
+    </select>
+</div>
+<label>
+    <input type="checkbox" class="btn btn-default" ng-model="selected" ng-change="vm.myClick(vm.myChkModel)"  ng-checked="master"/>
+sadfdsaf</label>
+
+
+<li ng-repeat="item in Items">
+    <label>{{item.Name}}
+        <input type="checkbox" ng-model="item.Selected" />
+    </label>
+</li>
+<script>
+
+    $scope.x = function () {
+        alert("x");
+        $scope.Items[0].Selected=true;
+    };
+</script>
+
+
+
+<div>
+    <form action="/#" method="get">
+    <label for="name">Name:</label>
+    <input id="name" name="name" value=""  aria-required="true" aria-describedby="name-format" required>
+    <span id="name-format" class="help">Format: firstname lastname</span>
+    <button type="submit">button</button>
+    </form>
+</div>
+
+
+
+<div>
+    <input type="checkbox" ng-model="permission.canWrite" /> canWrite<br />
+    <select ng-model="selectedValue"
+            ng-options="permissionLevel.text for permissionLevel in permissionLevels | filter:shouldShow"></select>
+
+</div>
+
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/aaaa/">Всё для ремонта Вашего автомобиля </a>
+        </div>
+
+        <ul class="nav navbar-nav">
+
+            <li><a href="/aaaa/">Домой</a></li>
+
+
+            <li><a href="/aaaa/service-panel/">Рабочий стол</a></li>
+
+
+            <li>
+                <p class="navbar-text">
+                    Добро пожаловать
+                    <a href="/aaaa/user-page">SAMOYLOV</a>
+                    <a href="/aaaa/logout">Выйти</a>
+                </p>
+            </li>
+
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/aaaa?languageVar=en">EN</a></li>
+            <li><a href="/aaaa?languageVar=ru">RU</a></li>
+            <li><a href="/aaaa?languageVar=zh_CN">CN</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+
+    <form id="orderTemplate" action="/aaaa/service-panel/create/text" method="post">
+        <input id="managerId" name="managerId" type="hidden" value="8"/>
+        <input id="companyId" name="companyId" type="hidden" value="2"/>
+
+        <input id="clientInBase" name="clientInBase" type="hidden" value="true"/>
+        <input id="firstName" name="firstName" type="hidden" value=""/>
+        <input id="lastName" name="lastName" type="hidden" value=""/>
+        <input id="phone" name="phone" type="hidden" value=""/>
+        <input id="clientId" name="clientId" type="hidden" value="8"/>
+        <input id="clientCarInList" name="clientCarInList" type="hidden" value="false"/>
+        <input id="clientCarId" name="clientCarId" type="hidden" value="-1"/>
+
+        <h3>Выберите марку и модель автомобиля</h3>
+        <div ng-show="!showDetail">
+
+            <select class="form-control" ng-model="data.markSelect">
+                <option ng-click="show{{data.markSelect}}Details = ! show{{data.markSelect}}Details;
+                                      showDetail = ! showDetail"
+                        value="1">Acura
+                </option>
+
+                <option ng-click="show2Details = ! show{{data.markSelect}}Details;
+                                      showDetail = ! showDetail"
+                        value="2">Alfa Romeo
+                </option>
+            </select>
+            <p>{{data.markSelect}}</p>
+            <p>{{data.markSelect == 1}}</p>
+        </div>
+
+        <div ng-show="data.markSelect == 1">
+
+            <a class="btn btn-default" ng-click="show + data.markSelect + Details = ! show{{data.markSelect}}Details;
+                                      showDetail = ! showDetail">
+                Другая марка
+            </a>
+
+        </div>
+
+
+        <div ng-show="{{data.markSelect == '1'}}">
+
+            <select class="form-control" ng-model="data.modelSelect">
+                <option ng-click=""
+                        value="1">Acura
+                </option>
+
+                <option ng-click="show2Details = ! show{{data.markSelect}}Details;
+                                      showDetail = ! showDetail"
+                        value="2">Alfa Romeo
+                </option>
+            </select>
+
+
+            <div ng-show="show{{data.markSelect}}Details" class="form-group">
+                <label class="new-model"><input id="carModelId1" name="carModelId" type="radio" value="1"/>
+                    CL
+                </label>
+            </div>
+
+            <div ng-show="{{data.markSelect == 2}}" class="form-group">
+                <label class="new-model"><input id="carModelId2" name="carModelId" type="radio" value="2"/>
+                    EL
+                </label>
+            </div>
+
+            <div ng-show="show{{data.markSelect}}Details" class="form-group">
+                <label class="new-model"><input id="carModelId3" name="carModelId" type="radio" value="3"/>
+                    Integra
+                </label>
+            </div>
+
+            <div ng-show="show{{data.markSelect}}Details" class="form-group">
+                <label class="new-model"><input id="carModelId4" name="carModelId" type="radio" value="4"/>
+                    MDX
+                </label>
+            </div>
+        </div>
+
+        <div ng-show="show{{data.markSelect}}Details">
+
+            <a class="btn btn-default" ng-click="show{{data.markSelect}}Details = ! show{{data.markSelect}}Details;
+                                      showDetail = ! showDetail">
+                Другая марка
+            </a>
+
+        </div>
+
+
+        <div ng-show="show{{data.markSelect}}Details">
+
+            <div ng-show="show{{data.markSelect}}Details" class="form-group">
+                <label class="new-model"><input id="carModelId11" name="carModelId" type="radio" value="11"/>
+                    33
+                </label>
+            </div>
+
+            <div ng-show="show{{data.markSelect}}Details" class="form-group">
+                <label class="new-model"><input id="carModelId12" name="carModelId" type="radio" value="12"/>
+                    75
+                </label>
+            </div>
+
+            <div ng-show="show{{data.markSelect}}Details" class="form-group">
+                <label class="new-model"><input id="carModelId13" name="carModelId" type="radio" value="13"/>
+                    145
+                </label>
+            </div>
+
+            <div ng-show="show{{data.markSelect}}Details" class="form-group">
+                <label class="new-model"><input id="carModelId14" name="carModelId" type="radio" value="14"/>
+                    146
+                </label>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="../../resources/js/angular.min.js"></script>
+<script>
+    var app = angular.module('plunker', []);
+
+    app.controller('MainCtrl', function($scope) {
+        $scope.permissionLevels = [
+            { value: "ROLE_READ", text: "Read Only" },
+            { value: "ROLE_WRITE", text: "Write" }
+        ];
+
+        $scope.permission = {
+            canWrite: false
+        };
+
+        $scope.shouldShow = function (permissionLevel) {
+            // put your authorization logic here
+            return $scope.permission.canWrite || permissionLevel.value !== 'ROLE_WRITE';
+        }
+    });
+</script>
+</body>
+</html>

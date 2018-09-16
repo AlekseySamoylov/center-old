@@ -1,0 +1,22 @@
+h1, h3 {
+    font-weight: 400;
+    font-size: 22px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+p {
+    margin: 0 0 1px;
+}
+pre {
+    margin: 0 0 1px;
+    display: block;
+    padding: 9.5px;
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.42857143;
+    color: #000;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #ffffff;
+    border: none;
+}

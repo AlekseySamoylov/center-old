@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  serviceiii:
+    build:
+      context: .
+    depends_on:
+    - postgres
+    ports:
+    - "28080:8080"
+  postgres:
+    image: library/postgres:9.6.8
+    volumes:
+    - ./docker/main/postgresql/ServiceCenter.sql:/docker-entrypoint-initdb.d/init_db.sql
+    ports:
+    - "25432:5432"
+    # it can be deleted
+    environment:
+    - DB_USER=alekseysamoylov
+    - DB_PASS=sql

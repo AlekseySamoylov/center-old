@@ -1,0 +1,82 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../../resources/css/star-rating.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../resources/js/angular.min.js"></script>
+    <script src="../../resources/js/bootstrap.min.js"></script>
+    <title>Оцените работу</title>
+</head>
+<body>
+<div class="wrapper">
+
+    <div class="container text-center">
+        <div class="col-xs">
+            <h1 >Оцените работу Автотехцентра</h1>
+            <br/>
+
+
+            <div class="star-rating">
+                <input form="rating-form" type="radio" value="1" name="stars">
+                <i></i>
+                <input form="rating-form" type="radio" value="2" name="stars">
+                <i></i>
+                <input form="rating-form" type="radio" value="3" name="stars">
+                <i></i>
+                <input form="rating-form" type="radio" value="4" name="stars" checked>
+                <i></i>
+                <input form="rating-form" type="radio" value="5" name="stars">
+                <i></i>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+
+            <form id="rating-form" action="http://www.google.com" method="post">
+                <div class="form-group">
+            <textarea class="form-control" id="comment" rows="8"
+                      placeholder="Ваш комментарий (Не обязательно)"></textarea>
+                </div>
+                <div class="col-xs-12">
+                    <button class="btn-lg btn-success" type="submit">Отправить оценку</button>
+                </div>
+            </form>
+
+            <!--<td> asdfasfa<span class="href-c">0</span>sdfsa</td>-->
+            <!--<br/>-->
+            <!--<td> asdfasfa<span class="href-c">2</span>sdfsa</td>-->
+            <!--<br/>-->
+
+            <!--<td> asdfasfa<span class="href-c">5</span>sdfsa</td>-->
+
+        <!--</div>-->
+        <!--<span id="href-c">0</span>-->
+        <div class="container text-center">
+            <h1>Благодарим за оценку</h1>
+            <img src="../../resources/pictures/smile.jpg" class="img-thumbnail" alt="Smile">
+        </div>
+    </div>
+</div>
+
+<script>
+    $(':radio').change(function () {
+        $('.choice').text('Ваша оценка: ' + this.value);
+    });
+    //# sourceURL=pen.js
+</script>
+<script>
+    var arr = [].slice.call(document.getElementsByClassName("href-c"));
+    arr.forEach(function (item, i, arr) {
+        if (item.innerHTML == 0) {
+            item.innerHTML = "http://" + window.location.hostname + ":" + window.location.port + "/rating/";
+        } else {
+            item.previousSibling.textContent = "Ваша оценка: ";
+            item.nextSibling.textContent = "";
+        }
+    });
+
+    document.getElementById("href-c").innerHTML = "http://" + window.location.hostname + ":" + window.location.port + window.location.pathname + "/rating/"
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gradle/
+build/
+target/
+
+/src/main/resources/database.properties
+/src/test/resources/database.properties
+/db/changelog/liquibase.properties
+.idea/workspace.xml
+/db/liquibase.jar
+
+logs/

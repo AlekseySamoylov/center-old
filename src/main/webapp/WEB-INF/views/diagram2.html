@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--Load the AJAX API-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<body>
+<!--Div that will hold the pie chart-->
+<div id="chart_div"></div>
+
+<script type="text/javascript">
+
+    $.getJSON( "http://localhost:18090/sss/diagrams-test", function( jsonObj ) {
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            var tempList = [];
+            var counter = 0;
+            data.addColumn('date', 'Дата');
+            data.addColumn('number', 'Оборот');
+            jsonObj.forEach(function (entry) {
+                tempList[counter] = ([new Date(entry.simpleDate), entry.daySum]);
+                counter++;
+            });
+            console.log(tempList);
+            data.addRows(tempList);
+            // Set chart options
+            var options = {'title':'Company Performance'};
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    });
+</script>
+</body>
+</html>

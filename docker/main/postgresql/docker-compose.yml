@@ -1,0 +1,13 @@
+version: '3'
+services:
+  postgres:
+    image: library/postgres:9.6.8
+    volumes:
+    - ./ServiceCenter.sql:/docker-entrypoint-initdb.d/init_db.sql
+    ports:
+    - "25432:5432"
+    restart: unless-stopped
+    # it can be deleted
+    environment:
+    - DB_USER=alekseysamoylov
+    - DB_PASS=sql
